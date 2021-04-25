@@ -36,6 +36,7 @@ class Form {
     });
 
     this.resetButton.mousePressed(()=>{
+      Player.updatefinished(0)
       player.updateCount(0)
       game.update(0)
       var playerref = database.ref('players');

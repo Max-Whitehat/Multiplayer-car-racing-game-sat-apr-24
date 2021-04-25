@@ -3,6 +3,7 @@ class Player {
     this.index = null;
     this.distance = 0;
     this.name = null;
+    this.rank = 0
   }
 
   getCount(){
@@ -17,6 +18,22 @@ class Player {
       playerCount: count
     });
   }
+
+  getfinished(){
+    var playerfinishedref = database.ref('finished');
+    playerfinishedref.on("value",(data)=>{
+      this.rank = data.val();
+    })
+  }
+
+  static updatefinished(rank){
+    console.log("updated"+rank)
+    var finishedref = database.ref('/')
+    finishedref.update({
+      finished: rank
+    });
+  }
+
 
   update(){
     var playerIndex = "players/player" + this.index;
